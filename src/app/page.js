@@ -9,86 +9,137 @@ import {
   Toolbar,
   Button,
   Grid,
+  Stack,
+  TextField,
+  Link,
 } from "@mui/material";
 import { SignIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Head from "next/head";
+import AppAppBar from "./component/AppAppBar";
+import InputLabel from "@mui/material/InputLabel";
+import FAQ from "./component/FAQ";
+import AboutUs from "./component/AboutUs";
+
+import { visuallyHidden } from "@mui/utils";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Container maxWidth="lg">
+      <Container
+        sx={{
+          alignItems: "center",
+        }}
+        maxWidth="lg"
+      >
         <Head>
           <title>CAMPUS CONNECT</title>
           <meta name="description" content="Create flashcards from your text" />
         </Head>
-
         <AppBar position="static" sx={{ backgroundColor: "#0D47A1" }}>
           <Toolbar>
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               Campus Connect
             </Typography>
-            <SignedOut>
-              <Button color="inherit" href="/sign-in" sx={{ ml: 2 }}>
-                Login
-              </Button>
-              <Button color="inherit" href="/sign-up" sx={{ ml: 2 }}>
-                Sign Up
-              </Button>
-              <Button color="inherit" href="/generate" sx={{ ml: 2 }}>
-                Generate
-              </Button>
-            </SignedOut>
+
+            <Button color="inherit" href="/sign-in" sx={{ ml: 2 }}>
+              Login
+            </Button>
+            <Button color="inherit" href="/sign-up" sx={{ ml: 2 }}>
+              Sign Up
+            </Button>
           </Toolbar>
         </AppBar>
-
-        <Box
+        <AppAppBar></AppAppBar>
+        <Container
           sx={{
-            textAlign: "center",
-            my: 8,
-            px: 3,
-            py: 8,
-            backgroundColor: "#E3F2FD",
-            borderRadius: 2,
-            boxShadow: 3,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            pt: { xs: 14, sm: 20 },
+            pb: { xs: 8, sm: 12 },
           }}
         >
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{ color: "#0D47A1", padding: "8px", borderRadius: "4px" }}
+          <Stack
+            spacing={2}
+            useFlexGap
+            sx={{ alignItems: "center", width: { xs: "100%", sm: "70%" } }}
           >
-            Welcome to Campus Connect
-          </Typography>
-          <Typography
-            variant="h5"
-            component="h2"
-            gutterBottom
-            sx={{ color: "#0D47A1" }}
-          >
-            The easiest way to connect with your school.
-          </Typography>
-          <Box sx={{ mt: 4 }}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              sx={{ mr: 2, backgroundColor: "#1976D2" }}
-              href="/sign-up"
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{ color: "#0D47A1", padding: "8px", borderRadius: "4px" }}
             >
-              Get Started
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="large"
-              sx={{ borderColor: "#1976D2", color: "#1976D2" }}
+              Welcome to Campus Connect
+            </Typography>
+            <Typography
+              variant="h5"
+              component="h2"
+              gutterBottom
+              sx={{ color: "#0D47A1" }}
             >
-              Learn More
-            </Button>
-          </Box>
-        </Box>
+              The easiest way to connect with your school.
+            </Typography>
 
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={1}
+              useFlexGap
+              sx={{
+                alignItems: "center",
+                pt: 2,
+                width: { xs: "100%", sm: "350px" },
+              }}
+            >
+              <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
+                Email
+              </InputLabel>
+              <TextField
+                id="email-hero"
+                hiddenLabel
+                size="small"
+                variant="outlined"
+                aria-label="Enter your email address"
+                placeholder="Your email address"
+                fullWidth
+                slotProps={{
+                  htmlInput: {
+                    autoComplete: "off",
+                    "aria-label": "Enter your email address",
+                  },
+                }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                sx={{ minWidth: "fit-content" }}
+                href="/sign-up"
+              >
+                Start now
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                sx={{ minWidth: "fit-content" }}
+                href="/sign-in"
+              >
+                Sign In
+              </Button>
+            </Stack>
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ textAlign: "center" }}
+            >
+              By clicking &quot;Start now&quot; you agree to our&nbsp;
+              <Link href="#" color="primary">
+                Terms & Conditions
+              </Link>
+            </Typography>
+          </Stack>
+        </Container>
         <Box sx={{ my: 8 }}>
           <Typography
             variant="h3"
@@ -96,45 +147,35 @@ export default function Home() {
             textAlign={"center"}
             sx={{ color: "#white" }}
           >
-            Features
+            [placeholder]
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
               <Box sx={{ textAlign: "center", px: 3 }}>
                 <Typography variant="h6" gutterBottom sx={{ color: "#white" }}>
-                  Easy Text Input
+                  [placeholder]
                 </Typography>
-                <Typography sx={{ color: "#white" }}>
-                  Simply input your text and let our software do the rest.
-                  Creating flashcards has never been easier.
-                </Typography>
+                <Typography sx={{ color: "#white" }}>[placeholder]</Typography>
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
               <Box sx={{ textAlign: "center", px: 3 }}>
                 <Typography variant="h6" gutterBottom sx={{ color: "#white" }}>
-                  Smart Flashcards
+                  [placeholder]
                 </Typography>
-                <Typography sx={{ color: "#white" }}>
-                  Our AI intelligently breaks down your text into concise
-                  flashcards, perfect for studying.
-                </Typography>
+                <Typography sx={{ color: "#white" }}>[placeholder]</Typography>
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
               <Box sx={{ textAlign: "center", px: 3 }}>
                 <Typography variant="h6" gutterBottom sx={{ color: "#white" }}>
-                  Accessible Anywhere
+                  [placeholder]
                 </Typography>
-                <Typography sx={{ color: "#white" }}>
-                  Access your flashcards from any device, at any time. Study on
-                  the go with ease.
-                </Typography>
+                <Typography sx={{ color: "#white" }}>[placeholder]</Typography>
               </Box>
             </Grid>
           </Grid>
         </Box>
-
         {/* Pricing section with a dark blue background and light blue highlights */}
         <Box
           sx={{
@@ -148,69 +189,9 @@ export default function Home() {
             boxShadow: 3,
           }}
         >
-          <Typography variant="h4" gutterBottom>
-            About us
-          </Typography>
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 4,
-                  border: "1px solid #E3F2FD", // Light blue border
-                  borderRadius: 2,
-                  backgroundColor: "#1976D2", // Medium blue background
-                  color: "white",
-                }}
-              >
-                <Typography variant="h5" gutterBottom>
-                  Basic
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                  $5 / month
-                </Typography>
-                <Typography>
-                  Access to basic flashcard features and limited storage.
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{ mt: 2, color: "white", backgroundColor: "#64B5F6" }} // Light blue button
-                >
-                  Choose Basic
-                </Button>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 4,
-                  border: "1px solid #E3F2FD", // Light blue border
-                  borderRadius: 2,
-                  backgroundColor: "#2196F3", // Medium blue background
-                  color: "white",
-                }}
-              >
-                <Typography variant="h5" gutterBottom>
-                  Pro
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                  $10 / month
-                </Typography>
-                <Typography>
-                  Unlimited flashcards and storage, with priority support.
-                </Typography>
-                <Button
-                  //onClick={handleSubmit}
-                  variant="contained"
-                  color="secondary"
-                  sx={{ mt: 2, color: "white", backgroundColor: "#64B5F6" }} // Light blue button
-                >
-                  Choose Pro
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
+          <AboutUs></AboutUs>
+        </Box>{" "}
+        <FAQ></FAQ>
       </Container>
     </main>
   );
